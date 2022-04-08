@@ -104,8 +104,73 @@ windows下安装TortoiseGit
 
 
 
+3 Git基本配置
+
+git  config ：对配置文件进行读写
+
+系统配置（对所有用户都适用）
+
+​     存放在git的安装目录下： %Git%/etc/gitconfg :      git config  --system  修改系统配置
+
+​     git config  --system  core.autocrlf   读取系统配置文件中的 core.autocrlf的值
+
+用户配置 （只适用于该用户） 
+
+​     存放在用户目录下   ~/.gitconfig
+
+​     git config   --global user.name     读取用户配置文件中 user.name的值
+
+仓库配置（只对当前项目有效）
+
+​     当前仓库配置文件（也就是工作目录中的.git/config）
+
+​    git config    --local remote.origin.url
+
+注：每一个级别的配置都会覆盖上层相同的配置，例如用户配置会覆盖系统配置中同名的变量
 
 
 
+3.1 配置个人身份
 
-git
+设定身份
+
+git config --global user.name "zzh"
+
+git config --global user.email  touhaodayanjing@163.com
+
+这个配置信息会在Git仓库中提交的修改信息中体现，但和Git服务器认证使用的密码或公钥密码无关。
+
+3.2 文本换行配置
+
+windows 换行 使回车和换行两个操作符来结束一行
+
+mac/linux 换行 使用换行一个字符
+
+针对跨平台合作，解决换行不同的问题
+
+Git在提交代码是会自动把结束符CRLF转换成LF，在再签出代码时把LF转换成CRLF， 使用core.autocrlf来打开此项功能，
+
+如果在windows上，则把它设置成true      git config  --global core.autocrlf true
+
+如果在linuxssh上，不需要在签出时将LF转成CRLF；当不小心引入了CRLF作为行结束符，则可以把core.autocrlf 设置成input;     git config --global auto.corecrlf input
+
+3.3文本编码
+
+ il8n.commitEncoding 选项：用来让 git commit log 存储时，采用的编码，默认UTF-8
+
+ il8n.logOutputEncoding 选项：查看git log时，显示采用的编码，建议设置为UTF-8
+
+中文编码支持
+
+git config --global gui.encoding utf-8
+
+git config --global  il8n.commitEncoding utf-8
+
+git config --global  il8n.logOutputEncoding utf-8
+
+显示中文路径
+
+git config --global core.quotepath false
+
+3.4 与服务器的两种协议认证方式
+
