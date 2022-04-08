@@ -174,3 +174,64 @@ git config --global core.quotepath false
 
 3.4 与服务器的两种协议认证方式
 
+http/https协议认证
+
+设置口令缓存  git config  --global credential.helper store
+
+添加 HTTPS证书信任 git config http.sslverify false
+
+ssh协议认证
+
+ssh协议是一种常常用的git仓库访问协议，使用公钥认证，无需输入密码，加密传输，操作便利又能保证安全性
+
+ssh-keygen -t rsa -C touhaodayanjing@   163  .com
+
+
+
+Git常用命令
+
+###### 工程准备
+
+ 工程克隆	git clone
+
+###### 查看工作区
+
+查看工作区内容	git diff
+
+查看工作区文件状态	git status
+
+###### 文件修改后提交推送
+
+新增/删除/移动文件到暂存区	git add/   git rm/  git mv
+
+提交更改的文件	git commit
+
+推送远端仓库		git push
+
+###### 查看日志
+
+查看当前分支上的提交日志	git log
+
+###### 分支管理
+
+列出本地分支		git branch
+
+新建分支		git branch / git checkout -b
+
+删除分支		git branch -d
+
+切换分支		git checkout
+
+更新分支		git pull
+
+合并分支		git merge
+
+###### 撤销操作
+
+强制回退到历史节点	git reset
+
+回退本地所有修改而未提交的	git  checkout
+
+###### 分支合并
+
+合并目标分支内容到当前分支	git merge / git rebase
